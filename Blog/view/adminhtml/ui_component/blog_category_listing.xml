@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blog_category_listing.blog_category_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>blog_category_columns</spinner>
+        <deps>
+            <dep>blog_category_listing.blog_category_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="blog/category/addnewcategory"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filters name="listing_filters" />
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="blog/category/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <dataSource name="blog_category_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Magenest_Blog::listing</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="blog_category_listing_data_source">
+            <settings>
+                <requestFieldName>category_id</requestFieldName>
+                <primaryFieldName>category_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <!-- columns -->
+    <columns name="blog_category_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>category_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <!-- Column id -->
+        <column name="category_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Category ID</label>
+            </settings>
+        </column>
+        <column name="name" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Category Name</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

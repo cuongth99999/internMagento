@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after">
+        <observer name="movie_change_name" instance="Magenest\Movie\Observer\ChangeName" />
+    </event>
+    <event name="magenest_movie_save_movie">
+        <observer name="magenest_movie_save_movie_before" instance="Magenest\Movie\Observer\Setrating" />
+    </event>
+    <!--    để ý event name="section_[section id="magenest"]" file system.xml-->
+    <event name="admin_system_config_changed_section_magenest">
+        <observer name="change_text_field_value_magenest_movie" instance="Magenest\Movie\Observer\ConfigObserver"/>
+    </event>
+<!--    <event name="adminhtml_customer_save_after">-->
+<!--        <observer name="magenest_movie_admin_save_customer" instance="Magenest\Movie\Observer\AdminSaveCustomer" />-->
+<!--    </event>-->
+<!--    <event name="adminhtml_customer_prepare_save">-->
+<!--        <observer name="magenest_movie_admin_save_customer_validate" instance="Magenest\Movie\Observer\AdminValidateCustomer" />-->
+<!--    </event>-->
+<!--    <event name="checkout_submit_all_after">-->
+<!--        <observer name="magenest_movie_invoice_checkout_submit_all_after" instance="Magenest\Movie\Observer\CheckoutAllSubmitAfterObserver"/>-->
+<!--    </event>-->
+</config>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_movie_addnewdirector_form.magenest_movie_addnewdirector_form_data_source</item>
+            <item name="deps" xsi:type="string">magenest_movie_addnewdirector_form.magenest_movie_addnewdirector_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Director Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="magenest_movie/movie/director"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="save">
+                <url path="magenest_movie/movie/savedirector"/>
+                <class>primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <namespace>magenest_movie_addnewdirector_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>magenest_movie_addnewdirector_form.magenest_movie_addnewdirector_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="magenest_movie_addnewdirector_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magenest\Movie\Model\Config\DirectorDataProvider</argument>
+            <argument name="name" xsi:type="string">magenest_movie_addnewdirector_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">director_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="magenest_movie/movie/savedirector" xsi:type="url" />
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="magenest_movie_addnewdirector">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">
+                    Director Form
+                </item>
+            </item>
+        </argument>
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="director_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Director name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewdirector</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

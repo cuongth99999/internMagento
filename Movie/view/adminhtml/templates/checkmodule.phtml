@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var \Magenest\Movie\Block\Adminhtml\ModuleAndStore\CheckModule $block
+ */
+$dt = $block->modulesList();
+?>
+<div>
+    <?php
+    echo 'Total number module in magento: ' . $dt['totalModule'] . '<br>';
+    echo 'Total number module non-magento: ' . $dt['total_module_non_magento'] . '<br>';
+    ?>
+</div>
+

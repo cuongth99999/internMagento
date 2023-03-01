@@ -1,0 +1,100 @@
+<?php
+$collection = $block->getCollection();
+$director = $block->getDirector();
+$movie = $block->getMovie();
+
+if ($movie->count()) {
+    ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php echo __('Movie_ID') ?></th>
+                <th scope="col" class="col name"><?php echo __('Name') ?></th>
+                <th scope="col" class="col description"><?php echo __('Description') ?></th>
+                <th scope="col" class="col rating"><?php echo __('Rating') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($movie as $item): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtml(__('Movie_ID')) ?>" class="col id">
+                        <?php echo $item->getId() ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
+                        <?php echo $item->getName() ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Description')) ?>" class="col name">
+                        <?php echo $item->getDescription() ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Rating')) ?>" class="col name">
+                        <?php echo $item->getRating() ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+}
+
+if ($collection->count()) {
+    ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php echo __('Actor_ID') ?></th>
+                <th scope="col" class="col name"><?php echo __('Name') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($collection as $item): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtml(__('Actor_ID')) ?>" class="col id">
+                        <?php echo $item->getId() ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
+                        <?php echo $item->getName() ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+}
+
+if ($director->count()) {
+    ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php echo __('Director_ID') ?></th>
+                <th scope="col" class="col name"><?php echo __('Name') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($director as $item): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtml(__('Director_ID')) ?>" class="col id">
+                        <?php echo $item->getId() ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col name">
+                        <?php echo $item->getDirectorName() ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+}
+?>

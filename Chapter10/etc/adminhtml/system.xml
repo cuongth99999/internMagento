@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="10">
+            <label>Magenest</label>
+        </tab>
+        <section id="magenest" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>magenest</class>
+            <label>Promotion</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Chapter10::chapter10_config</resource>
+            <group id="promotion" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Promotion Configuration</label>
+                <field id="text_field" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Promotion Information</label>
+                </field>
+                <field id="customer_group" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Group</label>
+                    <source_model>Magenest\Chapter10\Model\Config\Source\CustomerGroup</source_model>
+<!--                    <backend_model>Magenest\Chapter10\Model\System\Config\Backend\CustomerGroup</backend_model>-->
+                </field>
+            </group>
+            <group id="color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Color Option</label>
+                <field id="color_field" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Option</label>
+                    <frontend_model>Magenest\Chapter10\Block\Adminhtml\Form\Field\Color</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_movie_director_listing.magenest_movie_director_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>magenest_movie_director_columns</spinner>
+        <deps>
+            <dep>magenest_movie_director_listing.magenest_movie_director_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="magenest_movie/movie/addnewdirector"/>
+                <class>primary</class>
+                <label translate="true">Add new director</label>
+            </button>
+        </buttons>
+    </settings>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filters name="listing_filters" />
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/deletedirector"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <dataSource name="magenest_movie_director_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">director_id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Magenest_Movie::listing</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="magenest_movie_director_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>director_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <!-- columns -->
+    <columns name="magenest_movie_director_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>director_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <!-- Column id -->
+        <column name="director_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Director ID</label>
+            </settings>
+        </column>
+        <column name="director_name" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Director Name</label>
+            </settings>
+        </column>
+<!--        <actionsColumn name="actions" class="Intern\Chapter45\Ui\Component\Listing\Column\ActionsDirector">-->
+<!--            <settings>-->
+<!--                <indexField>director_id</indexField>-->
+<!--            </settings>-->
+<!--        </actionsColumn>-->
+    </columns>
+</listing>

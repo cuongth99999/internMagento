@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_blog" resource="default">
+        <column xsi:type="int" name="blog_id" identity="true"/>
+        <column xsi:type="int" name="author_id" unsigned="true"/>
+        <column xsi:type="text" name="title"/>
+        <column xsi:type="text" name="description"/>
+        <column xsi:type="text" name="content"/>
+        <column xsi:type="text" name="url_rewrite"/>
+        <column xsi:type="text" name="status"/>
+        <column xsi:type="timestamp" name="create_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="update_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id" />
+        </constraint>
+        <index referenceId="INDEX_TITLE" indexType="fulltext">
+            <column name="title"/>
+        </index>
+        <index referenceId="INDEX_CONTENT" indexType="fulltext">
+            <column name="content"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="author_id" table="magenest_blog"
+                    column="author_id" referenceTable="admin_user" referenceColumn="user_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="magenest_category" resource="default">
+        <column xsi:type="int" name="category_id" identity="true"/>
+        <column xsi:type="text" name="name"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id" />
+        </constraint>
+        <index referenceId="INDEX_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
+    </table>
+
+    <table name="magenest_blog_category" resource="default">
+        <column xsi:type="int" name="blog_id"/>
+        <column xsi:type="int" name="category_id"/>
+
+        <constraint xsi:type="foreign" referenceId="blog_id" table="magenest_blog_category"
+                    column="blog_id" referenceTable="magenest_blog" referenceColumn="blog_id" onDelete="CASCADE"/>
+
+        <constraint xsi:type="foreign" referenceId="category_id" table="magenest_blog_category"
+                    column="category_id" referenceTable="magenest_category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+</schema>

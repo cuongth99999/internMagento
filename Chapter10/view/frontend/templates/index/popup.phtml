@@ -1,0 +1,71 @@
+<?php
+/**
+ * @var $block \Magenest\Chapter10\Block\Index\Index
+ */
+
+$customerGroupCurrent = $block->getCustomerGroupIdCurrent();
+$customerGroupConfig = $block->getCustomerGroupConfig();
+$promotionTextValue = $block->getPromotionTextValue();
+$bgColorArr = $block->getColorValue();
+?>
+<div id="<?php echo $customerGroupCurrent == $customerGroupConfig ? 'header-mpdal':false; ?>" style="display:none;">
+    <div class="">
+        <p><?php echo $promotionTextValue; ?></p>
+    </div>
+</div>
+<div>
+    <select name="" id="color">
+        <?php
+        foreach ($bgColorArr as $color) {
+                ?>
+                <option value="<?php echo $color['color_picker']; ?>"><?php echo $color['color']; ?></option>
+                <?php
+        }
+        ?>
+    </select>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Popup Title',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#header-mpdal'));
+            window.onload = function()
+            {
+                $("#header-mpdal").modal("openModal");
+            };
+        }
+    );
+</script>
+
+<script>
+    require(
+        [
+            'jquery'
+        ],
+        function($) {
+            $("#color").on('click', function () {
+                var color = $("#color").val();
+                $('body').css('background', color);
+            })
+        });
+</script>

@@ -1,0 +1,27 @@
+<div>
+    <button id="first_button" class="first_button" style="margin-right: 50px;">Open Modal</button>
+    <button id="second_button" class="second_button" style="margin-right: 50px;">Open Magento Login Modal</button>
+    <button id="third_button" class="third_button" style="margin-right: 50px;">Open Custom Login Modal</button>
+</div>
+<div id="modal-content" style="display: none">
+    <p>This is the content of the modal.</p>
+</div>
+
+<div id="modal-login" style="display: none; background-color: #aeff7a;">
+    <div style="background-color: #aeff7a">
+        <div style="display: block; background-color: #ffffff; text-align: center; align-items: center; border: 1px">
+            <div style="margin-top: 20px; background-color: #c1e383">
+                <input type="text" placeholder="User name">
+            </div>
+            <div style="margin: 20px 0; background-color: #c1e383">
+                <input type="text" placeholder="Password">
+            </div>
+            <button style="background-color: green; color: white">Login</button>
+            <p style="margin-top: 20px">Not registed? <a href="" style="text-decoration: none; color: green">Create an account</a></p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['Magenest_Movie/js/buttonClick'], function (movie){})  ;
+</script>

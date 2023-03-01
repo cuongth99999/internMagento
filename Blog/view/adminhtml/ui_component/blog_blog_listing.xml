@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blog_blog_listing.blog_blog_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>blog_blog_columns</spinner>
+        <deps>
+            <dep>blog_blog_listing.blog_blog_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="blog/blog/addnewblog"/>
+                <class>save primary</class>
+                <label translate="true">Add New Blog</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="blog_blog_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">item_id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Magento_Reports::salesroot_sales</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="blog_blog_listing_data_source">
+            <settings>
+                <requestFieldName>blog_id</requestFieldName>
+                <primaryFieldName>blog_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <exportButton name="export_button"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="blog/blog/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <columns name="blog_blog_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>blog_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="blog_id">
+            <settings>
+                <label translate="true">Blog ID</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="title">
+            <settings>
+                <label translate="true">Title</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="description">
+            <settings>
+                <label translate="true">Blog Description</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="content">
+            <settings>
+                <label translate="true">Blog Content</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="username">
+            <settings>
+                <label translate="true">Actor name</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="create_at">
+            <settings>
+                <label translate="true">Created At</label>
+                <filter>datetime</filter>
+            </settings>
+        </column>
+        <column name="update_at">
+            <settings>
+                <label translate="true">Updated At</label>
+                <filter>datetime</filter>
+            </settings>
+        </column>
+        <column name="url_rewrite">
+            <settings>
+                <label translate="true">URL Rewrite</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="status">
+            <settings>
+                <label translate="true">Status</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magenest\Blog\Ui\Component\Listing\Column\ActionsBlog">
+            <settings>
+                <indexField>blog_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

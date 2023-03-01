@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top"/>
+    <columns name="customer_columns" class="Magento\Customer\Ui\Component\Listing\Columns">
+        <column name="avatar" class="Magenest\Movie\Ui\Component\Listing\Column\CustomerAttribute">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Avatar</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="telephone" class="Magenest\Movie\Ui\Component\Listing\Column\AddCustomerAttributeTelephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Telephone</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+<!--            <settings>-->
+<!--                <validation>-->
+<!--                    <rule name="required-entry" xsi:type="boolean">true</rule>-->
+<!--                    <rule name="vn-validate-phone" xsi:type="boolean">true</rule>-->
+<!--                </validation>-->
+<!--            </settings>-->
+        </column>
+    </columns>
+</listing>

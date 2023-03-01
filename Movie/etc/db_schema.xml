@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_director" resource="default">
+        <column xsi:type="int" name="director_id" identity="true"/>
+        <column xsi:type="text" name="director_name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="director_id" />
+        </constraint>
+    </table>
+
+    <table name="magenest_movie" resource="default" comment="List of data/schema patches">
+        <column xsi:type="int" name="movie_id" identity="true" nullable="false" padding="10"/>
+        <column xsi:type="text" name="name"/>
+        <column xsi:type="text" name="description"/>
+        <column xsi:type="int" name="rating"/>
+        <column xsi:type="int" name="director_id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="movie_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="director_id" table="magenest_movie"
+                    column="director_id" referenceTable="magenest_director" referenceColumn="director_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="magenest_actor" resource="default">
+        <column xsi:type="int" name="actor_id" identity="true" nullable="false" padding="10"/>
+        <column xsi:type="text" name="name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="actor_id" />
+        </constraint>
+    </table>
+
+    <table name="magenest_movie_actor" resource="default">
+        <column xsi:type="int" name="movie_id"/>
+        <column xsi:type="text" name="actor_id"/>
+        <constraint xsi:type="foreign" referenceId="movie_id" table="magenest_movie_actor"
+                    column="movie_id" referenceTable="magenest_movie" referenceColumn="movie_id" onDelete="CASCADE"/>
+    </table>
+    <!-- Add column to "sales_order" and "sales_order_grid" -->
+    <table name="sales_order">
+        <column xsi:type="varchar" name="oddeven" nullable="true" comment="Magenest Custom Column OddEven" />
+    </table>
+    <table name="sales_order_grid">
+        <column xsi:type="varchar" name="oddeven" nullable="true" comment="Magenest Custom Column OddEven" />
+    </table>
+</schema>

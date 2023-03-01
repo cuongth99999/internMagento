@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Movie::magenest" title="Movie" module="Magenest_Movie" sortOrder="41" resource="Magenest_Movie::menu"/>
+        <add id="Magenest_Movie::parent" title="Magenest" module="Magenest_Movie" sortOrder="10" resource="Magenest_Movie::parent" parent="Magenest_Movie::magenest"/>
+        <add id="Magenest_Movie::movie" title="Magenest Movie" module="Magenest_Movie" sortOrder="10" action="magenest_movie/movie/index" resource="Magenest_Movie::movie" parent="Magenest_Movie::parent"/>
+        <add id="Magenest_Movie::director" title="Magenest Director" module="Magenest_Movie" sortOrder="10" action="magenest_movie/movie/director" resource="Magenest_Movie::director" parent="Magenest_Movie::parent"/>
+        <add id="Magenest_Movie::actor" title="Magenest Actor" module="Magenest_Movie" sortOrder="10" action="magenest_movie/movie/actor" resource="Magenest_Movie::actor" parent="Magenest_Movie::parent"/>
+        <add id="Magenest_Movie::section_two" title="Section Two" module="Magenest_Movie" sortOrder="10" resource="Magenest_Movie::sectiontwo" parent="Magenest_Movie::magenest"/>
+        <add id="Magenest_Movie::check_module" title="Check Module" module="Magenest_Movie" sortOrder="10" action="magenest_movie/sectiontwo/checkmodule" resource="Magenest_Movie::checkmodule" parent="Magenest_Movie::section_two"/>
+        <add id="Magenest_Movie::check_store" title="Check Store" module="Magenest_Movie" sortOrder="10" action="magenest_movie/sectiontwo/checkstore" resource="Magenest_Movie::checkstore" parent="Magenest_Movie::section_two"/>
+    </menu>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="course_start" xsi:type="array">
+                    <item name="class" xsi:type="string">Magenest\Movie\Ui\DataProvider\Product\Form\Modifier\NewField</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="course_end" xsi:type="array">
+                    <item name="class" xsi:type="string">Magenest\Movie\Ui\DataProvider\Product\Form\Modifier\NewField</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+<!--                <item name="custom_options" xsi:type="array">-->
+<!--                    <item name="class" xsi:type="string">Magenest\Movie\Ui\DataProvider\Product\Form\Modifier\CustomOptions</item>-->
+<!--                    <item name="sortOrder" xsi:type="number">10</item>-->
+<!--                </item>-->
+                <item name="attachment" xsi:type="array">
+                    <item name="class" xsi:type="string">Magenest\Movie\Ui\DataProvider\Product\Form\Modifier\File</item>
+                    <item name="sortOrder" xsi:type="number">1000</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/Ui/etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magenest_movie_addnewmovie_form.magenest_movie_addnewmovie_form_data_source</item>
+            <item name="deps" xsi:type="string">magenest_movie_addnewmovie_form.magenest_movie_addnewmovie_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Sample Form</item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="magenest_movie/movie/index"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="save">
+                <url path="magenest_movie/movie/save"/>
+                <class>primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <namespace>magenest_movie_addnewmovie_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>magenest_movie_addnewmovie_form.magenest_movie_addnewmovie_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="magenest_movie_addnewmovie_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magenest\Movie\Model\Config\DataProvider</argument>
+            <argument name="name" xsi:type="string">magenest_movie_addnewmovie_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">movie_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" path="magenest_movie/movie/save" xsi:type="url" />
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="magenest_movie_addnewmovie">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">
+                    Movie Form
+                </item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="movie_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>
+                </item>
+            </argument>
+        </field>
+
+        <!-- This field has data type 'text' and standard 'input' form element and looks like input -->
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Movie name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item><!-- this validates it as required -->
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Movie Description</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>
+                </item>
+            </argument>
+        </field>
+        <field name="rating" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string">Rating</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>
+                    <item name="datascope" xsi:type="string">rating</item>
+                </item>
+            </argument>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magenest\Movie\Model\Config\Source\Rating" />
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="director_id" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Director</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>
+                </item>
+            </argument>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magenest\Movie\Model\Config\Source\Director" />
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+<!--        <field name="actor_id" formElement="multiselect">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="label" xsi:type="string">Actor</item>-->
+<!--                    <item name="visible" xsi:type="boolean">true</item>-->
+<!--                    <item name="dataType" xsi:type="string">text</item>-->
+<!--                    <item name="source" xsi:type="string">magenest_movie_addnewmovie</item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <formElements>-->
+<!--                <multiselect>-->
+<!--                    <settings>-->
+<!--                        <options class="Magenest\Movie\Model\Config\Source\Actor" />-->
+<!--                        <caption translate="true">&#45;&#45; Please Select &#45;&#45;</caption>-->
+<!--                    </settings>-->
+<!--                </multiselect>-->
+<!--            </formElements>-->
+<!--        </field>-->
+    </fieldset>
+</form>

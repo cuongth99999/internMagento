@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="10">
+            <label>Magenest</label>
+        </tab>
+        <section id="magenest" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Movie</label>
+            <tab>magenest</tab>
+            <resource>Magenest_Movie::movie_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Magenest Configuration</label>
+                <field id="text_field" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Field</label>
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>
+<!--                        Yes/No_Field_<strong class="colorRed">abcd</strong>-->
+                        <![CDATA[Yes/No_Field_<strong class="colorRed">abcd</strong>]]>
+                    </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="secret" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Select Field</label>
+                    <source_model>Magenest\Movie\Model\Config\Source\Show</source_model>
+                </field>
+                <field id="magenest_movie" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Row in table "magenest_movie"</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\RowMagenestMovie</frontend_model>
+                </field>
+                <field id="magenest_actor" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Row in table "magenest_actor"</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\RowMagenestActor</frontend_model>
+                    <depends>
+                        <field id="secret">1</field>
+                    </depends>
+                </field>
+                <field id="button_field" type="button" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Field</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\System\Config\ButtonField</frontend_model>
+                </field>
+            </group>
+        </section>
+        <section id="customizeadminhtml" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>magenest</class>
+            <label>Customize Adminhtml</label>
+            <tab>customer</tab>
+            <resource>Magenest_Movie::movie_config</resource>
+            <group id="settings" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Setup Customer Group</label>
+<!--                <attribute type="expanded">1</attribute>-->
+<!--                <field id="customer_group_couse_time" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">-->
+<!--                    <label>Customer Group Couse Time</label>-->
+<!--&lt;!&ndash;                    <frontend_model>Magenest\Movie\Block\Adminhtml\Form\Field\Ranges</frontend_model>&ndash;&gt;-->
+<!--                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>-->
+<!--                </field>-->
+                <field id="min_sale_qty" translate="label" sortOrder="6" showInDefault="1" canRestore="1">
+                    <label>Customer Group Couse Time</label>
+                    <frontend_model>Magenest\Movie\Block\Adminhtml\Form\Field\CustomerGroup</frontend_model>
+                    <backend_model>Magento\CatalogInventory\Model\System\Config\Backend\Minsaleqty</backend_model>
+<!--                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>-->
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

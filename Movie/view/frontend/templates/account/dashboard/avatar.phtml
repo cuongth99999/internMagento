@@ -1,0 +1,27 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magnest\Movie\Block\Account\Dashboard\Avatar $block */
+?>
+<div class="block block-dashboard-info">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Account Information Customer')) ?></strong></div>
+    <div class="block-content">
+        <div class="box box-information">
+            <div class="box-content">
+                <p>
+                    <?php if($block->getFileUrl() != false){ ?>
+                        <img src="<?php echo $block->getFileUrl() ?>" alt="image" /><br>
+                    <?php } ?>
+                    <?= $block->escapeHtml("Full name: ".$block->getName()) ?><br>
+                    <?= $block->escapeHtml("Email: ".$block->getCustomer()->getEmail()) ?><br>
+                    <?= $block->escapeHtml("Customer Group: ".$block->getCustomerGroup()) ?><br>
+                </p>
+                <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
+            </div>
+        </div>
+        <?= $block->getChildHtml('additional_blocks'); ?>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+<!--        <referenceContainer name="product.info.main">-->
+<!--            <block class="Magenest\Chapter10\Block\Product\View"-->
+<!--                   name="product.info_form-delivery"-->
+<!--                   template="Magenest_Chapter10::product/view/form-delivery.phtml" cacheable="false"-->
+<!--                   after="product.info.price"/>-->
+<!--        </referenceContainer>-->
+        <referenceBlock name="product.info" template="Magenest_Chapter10::product/view/form.phtml" />
+    </body>
+</page>

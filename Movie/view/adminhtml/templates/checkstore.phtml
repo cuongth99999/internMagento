@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var \Magenest\Movie\Block\Adminhtml\ModuleAndStore\CheckStore $block
+ */
+$data = $block->storeList();
+?>
+<div>
+    <div>
+        <table class="admin__table-secondary">
+            <tbody>
+            <tr>
+                <th>Total number customer:</th>
+                <td width="80%"><?php echo $data['totalCustomer']; ?></td>
+            </tr>
+            <tr>
+                <th>Total number product:</th>
+                <td><?php echo $data['totalProduct']; ?></td>
+            </tr>
+            <tr>
+                <th>Total number order:</th>
+                <td><?php echo $data['totalOrder']; ?></td>
+            </tr>
+            <tr>
+                <th>Total number invoice:</th>
+                <td><?php echo $data['totalInvoice']; ?></td>
+            </tr>
+            <tr>
+                <th>Total number credit Memo:</th>
+                <td><?php echo $data['totalCreditmemo']; ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

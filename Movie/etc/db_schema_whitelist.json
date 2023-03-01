@@ -1,0 +1,52 @@
+{
+    "magenest_director": {
+        "column": {
+            "director_id": true,
+            "director_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "magenest_movie": {
+        "column": {
+            "movie_id": true,
+            "name": true,
+            "description": true,
+            "rating": true,
+            "director_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "MAGENEST_MOVIE_DIRECTOR_ID_MAGENEST_DIRECTOR_DIRECTOR_ID": true
+        }
+    },
+    "magenest_actor": {
+        "column": {
+            "actor_id": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "magenest_movie_actor": {
+        "column": {
+            "movie_id": true,
+            "actor_id": true
+        },
+        "constraint": {
+            "MAGENEST_MOVIE_ACTOR_MOVIE_ID_MAGENEST_MOVIE_MOVIE_ID": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "oddeven": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "oddeven": true
+        }
+    }
+}
