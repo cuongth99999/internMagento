@@ -81,7 +81,7 @@
                 <label translate="true">actor Name</label>
             </settings>
         </column>
-<!--        <actionsColumn name="actions" class="Intern\Chapter45\Ui\Component\Listing\Column\Actionsactor">-->
+<!--        <actionsColumn name="actions" class="Magenest\Movie\Ui\Component\Listing\Column\Actionsactor">-->
 <!--            <settings>-->
 <!--                <indexField>actor_id</indexField>-->
 <!--            </settings>-->
