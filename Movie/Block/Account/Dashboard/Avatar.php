@@ -114,7 +114,7 @@ class Avatar extends Template
     {
         $storeCode = $this->storeManager->getStore()->getCode();
         $storeUrl = $this->storeManager->getStore()->getBaseUrl();
-        return str_replace($storeCode.'/', 'pub/media/', $storeUrl);
+        return str_replace($storeCode.'/', '', $storeUrl);
     }
 
     public function getCustomerImageUrl($filePath)
